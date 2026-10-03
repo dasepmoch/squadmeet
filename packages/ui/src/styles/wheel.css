@@ -1,0 +1,89 @@
+/* The quick emote wheel (Q). */
+.wheel-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  background: radial-gradient(circle at 50% 46%, rgba(10, 12, 17, 0.3), rgba(10, 12, 17, 0.72));
+  pointer-events: auto;
+}
+.wheel {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+.wheel__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: rgba(17, 19, 26, 0.86);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+.wheel__item {
+  --r: 122px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  transform: rotate(var(--a)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--a)));
+  transition:
+    background var(--fast),
+    transform var(--med) var(--ease-out);
+}
+.wheel__item:hover,
+.wheel__item.is-hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: rotate(var(--a)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--a)))
+    scale(1.16);
+}
+.wheel__item:disabled {
+  opacity: 0.25;
+  cursor: default;
+  background: transparent;
+}
+.wheel__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 148px;
+  height: 148px;
+  padding: 18px;
+  translate: -50% -50%;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+.wheel-backdrop > .reactions {
+  display: flex;
+  padding: 6px;
+  border-radius: 999px;
+}
+.wheel-backdrop .reaction {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@huddle/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./nav": "./src/nav/walk-grid.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "0.21.0",
+    "@huddle/shared": "workspace:*"
+  }
+}

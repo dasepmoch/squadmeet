@@ -1,0 +1,330 @@
+/* World labels: name tags, the speaking badge, chat bubbles, hands, reactions and pops. */
+.world-labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* Own stacking context: per-label depth z-indices must never rise above the HUD. */
+  z-index: 0;
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+.wl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.wl__stack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /* The label root is a zero-size point: size the stack by its content, not by that point. */
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transform: translateX(-50%);
+}
+.wl__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px 0 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 12, 17, 0.72);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  color: #fff;
+  font: 600 12.5px/1 var(--font);
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition:
+    border-color 200ms,
+    box-shadow 200ms,
+    background 200ms;
+}
+.wl__tag::before {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--wl-color, var(--accent));
+}
+.wl__tag[data-bot='AI']::after {
+  content: attr(data-bot);
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: rgba(54, 226, 195, 0.18);
+  color: var(--accent);
+  font: 700 9px/1 var(--font);
+  letter-spacing: 0.02em;
+}
+
+/* Speaking: the dot becomes an aqua badge with bars that follow the voice, the tag glows. */
+.wl__voice {
+  --lvl: 0.5;
+  display: none;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5px;
+  width: 22px;
+  height: 22px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: voice-halo 1.4s ease-out infinite;
+}
+@keyframes voice-halo {
+  0% {
+    box-shadow: 0 0 0 0 rgba(54, 226, 195, 0.55);
+  }
+  80%,
+  100% {
+    box-shadow: 0 0 0 6px rgba(54, 226, 195, 0);
+  }
+}
+.wl__voice i {
+  display: block;
+  width: 2.5px;
+  height: 12px;
+  border-radius: 2px;
+  background: #04211b;
+  scale: 1 calc(0.35 + var(--lvl) * 0.65);
+  transition: scale 90ms linear;
+  animation: vbar 0.8s ease-in-out infinite;
+}
+.wl__voice i:nth-child(2) {
+  animation-delay: -0.27s;
+}
+.wl__voice i:nth-child(3) {
+  animation-delay: -0.54s;
+}
+.wl__tag--speaking {
+  border-color: rgba(54, 226, 195, 0.75);
+  box-shadow:
+    0 0 0 1px rgba(54, 226, 195, 0.45),
+    0 0 18px rgba(54, 226, 195, 0.32),
+    0 4px 14px rgba(0, 0, 0, 0.28);
+}
+.wl__tag--speaking::before {
+  display: none;
+}
+.wl__tag--speaking .wl__voice {
+  display: inline-flex;
+}
+
+/* Muted, hand up, "Don't hit me" */
+.wl__mic {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background: currentColor;
+  opacity: 0.72;
+  -webkit-mask: var(--icon-mic-off) center / contain no-repeat;
+  mask: var(--icon-mic-off) center / contain no-repeat;
+}
+.wl__tag--muted .wl__mic {
+  display: inline-block;
+}
+.wl__hand {
+  display: none;
+  font-size: 14px;
+  transform-origin: 70% 90%;
+  animation: wave-hand 1.4s ease-in-out infinite;
+}
+@keyframes wave-hand {
+  50% {
+    transform: rotate(14deg);
+  }
+}
+.wl__tag--hand {
+  border-color: rgba(255, 255, 255, 0.35);
+  background: var(--warn);
+  color: #2a1a00;
+}
+.wl__tag--hand .wl__hand {
+  display: inline;
+}
+.wl__shield {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background: #7df9ff;
+  -webkit-mask: var(--icon-shield) center / contain no-repeat;
+  mask: var(--icon-shield) center / contain no-repeat;
+}
+.wl__tag--shield {
+  border-color: rgba(125, 249, 255, 0.5);
+}
+.wl__tag--shield .wl__shield {
+  display: inline-block;
+}
+
+/*
+ * Your own tag only shows up for a raised hand or while you speak (no name). In the green room
+ * (`--preview`) it is shown in full, the way the others will see it.
+ */
+.wl__tag--local:not(.wl__tag--preview) .wl__name,
+.wl__tag--local:not(.wl__tag--preview) .wl__mic,
+.wl__tag--local:not(.wl__tag--preview) .wl__shield,
+.wl__tag--local:not(.wl__tag--preview)::before,
+.wl__tag--local:not(.wl__tag--preview)::after {
+  display: none;
+}
+.wl__tag--local:not(.wl__tag--preview) {
+  padding: 0 6px;
+}
+.wl__tag--local:not(.wl__tag--preview).wl__tag--speaking:not(.wl__tag--hand) {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.wl__tag--local:not(.wl__tag--preview) .wl__voice {
+  margin-left: 0;
+}
+.wl__tag--local:not(.wl__tag--preview):not(.wl__tag--hand):not(.wl__tag--speaking) {
+  display: none;
+}
+.wl__tag--preview {
+  height: 30px;
+  padding: 0 12px 0 11px;
+  font-size: 14px;
+  animation: wl-preview-in 520ms var(--ease-out) both;
+}
+@keyframes wl-preview-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.92);
+  }
+}
+
+/* Chat bubbles */
+.wl__bubble {
+  position: relative;
+  display: none;
+  width: max-content;
+  max-width: 240px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: #f5f7fa;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  color: #0d1016;
+  font: 500 13.5px/1.35 var(--font);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.wl__bubble.is-open {
+  display: block;
+  animation: bubble-in 240ms var(--ease-out) both;
+}
+.wl__bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  border-radius: 2px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+@keyframes bubble-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+  }
+}
+
+/* Reactions and pops rise from the head */
+.wl__fx {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}
+.wl__reaction {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 34px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
+  transform: translateX(-50%);
+  animation: float-up 2.2s var(--ease-out) forwards;
+}
+@keyframes float-up {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.4);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, -8px) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--drift, 0px)), -120px) scale(0.9);
+  }
+}
+.wl__pop {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 2px 10px;
+  color: #fff;
+  font: 800 22px/1.1 var(--font);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  -webkit-text-stroke: 1.5px #0d1016;
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 #0d1016;
+  animation: pop-text 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.wl__pop--hit {
+  color: #ffd21f;
+}
+.wl__pop--love {
+  color: #ff8fb1;
+}
+.wl__pop--party {
+  color: #b6ff2e;
+}
+@keyframes pop-text {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0) rotate(var(--tilt, 0deg)) scale(0.3);
+  }
+  22% {
+    opacity: 1;
+    transform: translate(-50%, -22px) rotate(var(--tilt, 0deg)) scale(1.25);
+  }
+  70% {
+    opacity: 1;
+    transform: translate(-50%, -34px) rotate(var(--tilt, 0deg)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -52px) rotate(var(--tilt, 0deg)) scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl__voice,
+  .wl__voice i,
+  .wl__hand {
+    animation: none;
+  }
+}

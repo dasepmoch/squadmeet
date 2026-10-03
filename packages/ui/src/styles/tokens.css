@@ -1,0 +1,76 @@
+/* SquidMeet design tokens: deep ink surfaces, hairline edges, one aqua accent ("squid glow"). */
+:root {
+  --bg: #0a0c11;
+  --surface: rgba(17, 19, 26, 0.8);
+  --surface-solid: #13161d;
+  --surface-raised: #1b1f28;
+  --hover: rgba(255, 255, 255, 0.07);
+  --fill: rgba(255, 255, 255, 0.05);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+
+  --text: #f5f7fa;
+  --text-2: rgba(245, 247, 250, 0.7);
+  --text-3: rgba(245, 247, 250, 0.46);
+
+  --accent: #36e2c3;
+  --accent-hover: #5ceed4;
+  --accent-ink: #04211b;
+  --accent-soft: rgba(54, 226, 195, 0.14);
+  --accent-line: rgba(54, 226, 195, 0.5);
+  --danger: #ff4d6a;
+  --danger-soft: rgba(255, 77, 106, 0.16);
+  --danger-text: #ff8597;
+  --warn: #ffb020;
+  --warn-soft: rgba(255, 176, 32, 0.16);
+  --warn-text: #ffc764;
+
+  --blur: saturate(1.5) blur(24px);
+  --font: 'Inter Variable', Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Headlines only (landing, green room, intro). */
+  --font-display: Unbounded, 'Inter Variable', Inter, ui-sans-serif, system-ui, sans-serif;
+  --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-2xl: 20px;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.32), 0 2px 6px rgba(0, 0, 0, 0.22);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(0, 0, 0, 0.3);
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 120ms;
+  --med: 200ms;
+  --slow: 380ms;
+
+  --edge: 16px;
+  --bar-h: 56px;
+  --island-h: 48px;
+
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Icons as CSS masks (name tags are plain DOM, not React). */
+  --icon-mic-off: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 9.4V6a3 3 0 0 0-5.7-1.3M9 9v2a3 3 0 0 0 5.1 2.1M5.5 11a6.5 6.5 0 0 0 10.6 5M12 17.5V21M3.5 3.5l17 17'/%3E%3C/svg%3E");
+  --icon-shield: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2.5 4.5 5.7v5.8c0 4.7 3.2 8.6 7.5 10 4.3-1.4 7.5-5.3 7.5-10V5.7Z' fill='black'/%3E%3C/svg%3E");
+  --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A9AEB8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6.5 9.5 12 15l5.5-5.5'/%3E%3C/svg%3E");
+}
+
+@media (max-width: 720px) {
+  :root {
+    --edge: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fast: 0ms;
+    --med: 0ms;
+    --slow: 0ms;
+  }
+}

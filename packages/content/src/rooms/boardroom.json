@@ -1,0 +1,593 @@
+{
+  "id": "boardroom",
+  "name": "Boardroom 12F",
+  "version": 1,
+  "architecture": {
+    "width": 16,
+    "depth": 12,
+    "height": 3.1,
+    "wallThickness": 0.25,
+    "floor": "carpet",
+    "floorColor": "#5A5B5F",
+    "wallColors": { "north": "charcoal", "south": "linen", "east": "linen", "west": "sage" },
+    "ceilingColor": "offWhite",
+    "baseboardColor": "charcoal",
+    "tray": { "center": [0, -0.4], "size": [4.4, 8.6], "rise": 0.3 },
+    "doors": [
+      {
+        "id": "main",
+        "wall": "south",
+        "offset": 5.2,
+        "width": 1.05,
+        "height": 2.25,
+        "color": "walnut"
+      }
+    ]
+  },
+  "lighting": {
+    "fixtureColor": "neutralWhite",
+    "fixtureIntensity": 1,
+    "ambientColor": "#E6E1D8",
+    "ambientIntensity": 0.3,
+    "envIntensity": 0.9,
+    "exposure": 1,
+    "lights": [
+      {
+        "id": "field",
+        "kind": "directional",
+        "role": "house",
+        "position": [1.2, 12, 2.6],
+        "target": [0, 0, 0],
+        "intensity": 1.4,
+        "castShadow": true
+      },
+      {
+        "id": "table-n",
+        "kind": "spot",
+        "role": "house",
+        "position": [0, 2.56, -2.1],
+        "target": [0, 0, -2.1],
+        "intensity": 16,
+        "angle": 1.1,
+        "penumbra": 1
+      },
+      {
+        "id": "table-s",
+        "kind": "spot",
+        "role": "house",
+        "position": [0, 2.56, 1.3],
+        "target": [0, 0, 1.3],
+        "intensity": 16,
+        "angle": 1.1,
+        "penumbra": 1
+      },
+      {
+        "id": "wash-w",
+        "kind": "spot",
+        "role": "wash",
+        "position": [-2.4, 3.05, -5.05],
+        "target": [-2.4, 1.0, -6.0],
+        "intensity": 20,
+        "angle": 0.95,
+        "penumbra": 1,
+        "minQuality": "medium"
+      },
+      {
+        "id": "wash-e",
+        "kind": "spot",
+        "role": "wash",
+        "position": [2.4, 3.05, -5.05],
+        "target": [2.4, 1.0, -6.0],
+        "intensity": 20,
+        "angle": 0.95,
+        "penumbra": 1,
+        "minQuality": "medium"
+      },
+      {
+        "id": "lounge",
+        "kind": "spot",
+        "role": "house",
+        "position": [5.9, 3.05, -0.6],
+        "target": [6.6, 0, -0.2],
+        "intensity": 26,
+        "angle": 1.2,
+        "penumbra": 1
+      },
+      {
+        "id": "coffee",
+        "kind": "spot",
+        "role": "house",
+        "position": [-6.0, 3.05, 0.6],
+        "target": [-6.8, 0, 0.6],
+        "intensity": 26,
+        "angle": 1.2,
+        "penumbra": 1
+      },
+      {
+        "id": "south",
+        "kind": "spot",
+        "role": "house",
+        "position": [0, 3.05, 4.9],
+        "target": [0, 0, 4.4],
+        "intensity": 20,
+        "angle": 1.25,
+        "penumbra": 1,
+        "minQuality": "high"
+      },
+      {
+        "id": "pendant",
+        "kind": "point",
+        "role": "accent",
+        "color": "warmWhite",
+        "position": [-5.5, 2.2, 1.4],
+        "intensity": 3.2,
+        "distance": 5,
+        "minQuality": "high"
+      },
+      {
+        "id": "floor-lamp",
+        "kind": "point",
+        "role": "accent",
+        "color": "warmWhite",
+        "position": [7.55, 1.55, 2.25],
+        "intensity": 2.6,
+        "distance": 4.5,
+        "minQuality": "high"
+      }
+    ]
+  },
+  "screen": { "center": [0, 1.62, -5.93], "width": 3.3, "height": 1.86, "yaw": 0, "bezel": 0.025 },
+  "boards": [
+    {
+      "id": "wb-east",
+      "center": [7.955, 1.45, -3.6],
+      "width": 2.6,
+      "height": 1.25,
+      "yaw": -1.5707963
+    }
+  ],
+  "spawns": [
+    { "position": [5.0, 0, 4.5], "yaw": 3.14159 },
+    { "position": [4.2, 0, 4.7], "yaw": 3.14159 },
+    { "position": [5.8, 0, 4.2], "yaw": 3.14159 },
+    { "position": [3.4, 0, 4.3], "yaw": 3.14159 }
+  ],
+  "voiceZones": [{ "id": "room", "mode": "global", "min": [-8, -6], "max": [8, 6] }],
+  "overviewCamera": { "position": [0, 13.5, 11.5], "target": [0, 0, -0.3] },
+  "props": [
+    {
+      "id": "table",
+      "type": "conference-table",
+      "position": [0, 0, -0.4],
+      "color": "walnut",
+      "accent": "charcoal",
+      "params": { "width": 1.6, "depth": 6.4, "height": 0.74 }
+    },
+    {
+      "id": "chair-w1",
+      "type": "office-chair",
+      "position": [-1.3, 0, -3.0],
+      "yaw": 1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-w2",
+      "type": "office-chair",
+      "position": [-1.3, 0, -1.7],
+      "yaw": 1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-w3",
+      "type": "office-chair",
+      "position": [-1.3, 0, -0.4],
+      "yaw": 1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-w4",
+      "type": "office-chair",
+      "position": [-1.3, 0, 0.9],
+      "yaw": 1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-w5",
+      "type": "office-chair",
+      "position": [-1.3, 0, 2.2],
+      "yaw": 1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-e1",
+      "type": "office-chair",
+      "position": [1.3, 0, -3.0],
+      "yaw": -1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-e2",
+      "type": "office-chair",
+      "position": [1.3, 0, -1.7],
+      "yaw": -1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-e3",
+      "type": "office-chair",
+      "position": [1.3, 0, -0.4],
+      "yaw": -1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-e4",
+      "type": "office-chair",
+      "position": [1.3, 0, 0.9],
+      "yaw": -1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-e5",
+      "type": "office-chair",
+      "position": [1.3, 0, 2.2],
+      "yaw": -1.5708,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "chair-head",
+      "type": "office-chair",
+      "position": [0, 0, 3.55],
+      "yaw": 3.14159,
+      "color": "charcoal",
+      "accent": "aluminum"
+    },
+    {
+      "id": "desk-w1",
+      "type": "desk-setup",
+      "position": [-0.5, 0.74, -3.0],
+      "yaw": -1.5708,
+      "variant": "laptop"
+    },
+    {
+      "id": "desk-w2",
+      "type": "desk-setup",
+      "position": [-0.5, 0.74, -1.7],
+      "yaw": -1.5708,
+      "variant": "notebook"
+    },
+    {
+      "id": "desk-w3",
+      "type": "desk-setup",
+      "position": [-0.5, 0.74, -0.4],
+      "yaw": -1.5708,
+      "variant": "laptop"
+    },
+    {
+      "id": "desk-w4",
+      "type": "desk-setup",
+      "position": [-0.5, 0.74, 0.9],
+      "yaw": -1.5708,
+      "variant": "tablet"
+    },
+    {
+      "id": "desk-w5",
+      "type": "desk-setup",
+      "position": [-0.5, 0.74, 2.2],
+      "yaw": -1.5708,
+      "variant": "laptop"
+    },
+    {
+      "id": "desk-e1",
+      "type": "desk-setup",
+      "position": [0.5, 0.74, -3.0],
+      "yaw": 1.5708,
+      "variant": "notebook"
+    },
+    {
+      "id": "desk-e2",
+      "type": "desk-setup",
+      "position": [0.5, 0.74, -1.7],
+      "yaw": 1.5708,
+      "variant": "laptop"
+    },
+    {
+      "id": "desk-e3",
+      "type": "desk-setup",
+      "position": [0.5, 0.74, -0.4],
+      "yaw": 1.5708,
+      "variant": "notebook"
+    },
+    {
+      "id": "desk-e4",
+      "type": "desk-setup",
+      "position": [0.5, 0.74, 0.9],
+      "yaw": 1.5708,
+      "variant": "laptop"
+    },
+    {
+      "id": "desk-e5",
+      "type": "desk-setup",
+      "position": [0.5, 0.74, 2.2],
+      "yaw": 1.5708,
+      "variant": "tablet"
+    },
+    {
+      "id": "desk-head",
+      "type": "desk-setup",
+      "position": [0, 0.74, 2.42],
+      "yaw": 0,
+      "variant": "laptop"
+    },
+    { "id": "center-n", "type": "table-center", "position": [0, 0.74, -2.0], "variant": "phone" },
+    { "id": "center-s", "type": "table-center", "position": [0, 0.74, 1.2], "variant": "carafe" },
+    {
+      "id": "slats",
+      "type": "slat-wall",
+      "position": [0, 0, -6],
+      "color": "walnut",
+      "accent": "charcoal",
+      "params": { "width": 9.4, "height": 3.1 }
+    },
+    {
+      "id": "credenza-n",
+      "type": "credenza",
+      "position": [0, 0, -5.73],
+      "color": "walnut",
+      "accent": "charcoal",
+      "params": { "width": 3.9, "depth": 0.46, "height": 0.56 }
+    },
+    {
+      "id": "lectern",
+      "type": "lectern",
+      "position": [-2.95, 0, -4.65],
+      "yaw": 0.4,
+      "color": "walnut",
+      "accent": "aluminum"
+    },
+    { "id": "plant-nw", "type": "plant-tall", "position": [-7.35, 0, -5.4], "variant": "bird" },
+    { "id": "plant-n1", "type": "plant-tall", "position": [-5.2, 0, -5.45], "variant": "fig" },
+    { "id": "plant-n2", "type": "plant-tall", "position": [5.2, 0, -5.45], "variant": "bird" },
+    {
+      "id": "whiteboard",
+      "type": "whiteboard",
+      "position": [8, 0, -3.6],
+      "yaw": -1.5708,
+      "params": { "width": 2.6, "height": 1.25, "y": 1.45 }
+    },
+    {
+      "id": "felt-east",
+      "type": "felt-panels",
+      "position": [8, 0, 0.4],
+      "yaw": -1.5708,
+      "color": "slate",
+      "accent": "sage",
+      "params": { "width": 3.0, "height": 0.9, "y": 1.85, "pattern": "hex" }
+    },
+    {
+      "id": "sofa",
+      "type": "lounge-sofa",
+      "position": [7.47, 0, 0.4],
+      "yaw": -1.5708,
+      "color": "slate",
+      "accent": "black"
+    },
+    {
+      "id": "lounge-a",
+      "type": "lounge-chair",
+      "position": [5.3, 0, -0.95],
+      "yaw": 1.05,
+      "color": "terracotta",
+      "accent": "oak"
+    },
+    {
+      "id": "lounge-b",
+      "type": "lounge-chair",
+      "position": [5.3, 0, 1.75],
+      "yaw": 2.09,
+      "color": "terracotta",
+      "accent": "oak"
+    },
+    {
+      "id": "coffee-table",
+      "type": "coffee-table",
+      "position": [6.35, 0, 0.4],
+      "color": "oak",
+      "accent": "black"
+    },
+    {
+      "id": "rug",
+      "type": "rug",
+      "position": [6.45, 0, 0.4],
+      "color": "greige",
+      "accent": "linen",
+      "params": { "width": 3.1, "depth": 4.4 }
+    },
+    {
+      "id": "floor-lamp",
+      "type": "floor-lamp",
+      "position": [7.55, 0, 2.25],
+      "color": "black",
+      "accent": "linen"
+    },
+    { "id": "plant-e", "type": "plant-medium", "position": [7.5, 0, -1.55], "variant": "snake" },
+    { "id": "switch", "type": "light-switch", "position": [4.3, 0, 6], "yaw": 3.14159 },
+    {
+      "id": "bookshelf",
+      "type": "bookshelf",
+      "position": [-5.6, 0, 5.8],
+      "yaw": 3.14159,
+      "color": "walnut",
+      "params": { "width": 2.4, "depth": 0.38, "height": 2.05 }
+    },
+    {
+      "id": "credenza-s",
+      "type": "credenza",
+      "position": [-1.6, 0, 5.77],
+      "yaw": 3.14159,
+      "color": "oak",
+      "accent": "black",
+      "params": { "width": 3.4, "depth": 0.45, "height": 0.72 }
+    },
+    {
+      "id": "decor-s",
+      "type": "shelf-decor",
+      "position": [-1.6, 0.72, 5.77],
+      "yaw": 3.14159,
+      "params": { "width": 3.2 }
+    },
+    {
+      "id": "art-s1",
+      "type": "art-frame",
+      "position": [-2.45, 0, 6],
+      "yaw": 3.14159,
+      "params": { "width": 1.1, "height": 1.4, "y": 1.75, "seed": 3 }
+    },
+    {
+      "id": "art-s2",
+      "type": "art-frame",
+      "position": [-0.75, 0, 6],
+      "yaw": 3.14159,
+      "params": { "width": 1.1, "height": 1.4, "y": 1.75, "seed": 11 }
+    },
+    {
+      "id": "clock",
+      "type": "wall-clock",
+      "position": [1.6, 0, 6],
+      "yaw": 3.14159,
+      "params": { "y": 2.15 }
+    },
+    { "id": "plant-se", "type": "plant-tall", "position": [7.35, 0, 5.4], "variant": "fig" },
+    {
+      "id": "hoop",
+      "type": "hoop",
+      "position": [8, 0, 3.7],
+      "yaw": -1.5708,
+      "color": "white",
+      "accent": "tomato"
+    },
+    {
+      "id": "scoreboard",
+      "type": "scoreboard",
+      "position": [8, 0, 2.62],
+      "yaw": -1.5708,
+      "params": { "width": 0.72, "height": 0.46, "y": 2.36 }
+    },
+    { "id": "bin-s", "type": "trash-bin", "position": [3.5, 0, 5.72], "color": "graphite" },
+    {
+      "id": "coffee-bar",
+      "type": "coffee-bar",
+      "position": [-7.68, 0, 0.4],
+      "yaw": 1.5708,
+      "color": "offWhite",
+      "accent": "oak",
+      "params": { "width": 4.2, "depth": 0.64, "height": 0.92 }
+    },
+    {
+      "id": "felt-west",
+      "type": "felt-panels",
+      "position": [-8, 0, -3.5],
+      "yaw": 1.5708,
+      "color": "forest",
+      "accent": "sage",
+      "params": { "width": 2.6, "height": 1.3, "y": 1.6, "pattern": "stripes" }
+    },
+    {
+      "id": "art-w",
+      "type": "art-frame",
+      "position": [-8, 0, 3.9],
+      "yaw": 1.5708,
+      "params": { "width": 1.6, "height": 1.0, "y": 1.6, "seed": 21 }
+    },
+    {
+      "id": "bar-table",
+      "type": "bar-table",
+      "position": [-5.5, 0, 1.4],
+      "color": "white",
+      "accent": "black"
+    },
+    { "id": "pizza", "type": "pizza-box", "position": [-5.58, 1.06, 1.49], "yaw": 0.35 },
+    {
+      "id": "stool-1",
+      "type": "bar-stool",
+      "position": [-5.5, 0, 2.02],
+      "yaw": 3.14159,
+      "color": "oak",
+      "accent": "black"
+    },
+    {
+      "id": "stool-2",
+      "type": "bar-stool",
+      "position": [-4.963, 0, 1.09],
+      "yaw": -1.0472,
+      "color": "oak",
+      "accent": "black"
+    },
+    {
+      "id": "stool-3",
+      "type": "bar-stool",
+      "position": [-6.037, 0, 1.09],
+      "yaw": 1.0472,
+      "color": "oak",
+      "accent": "black"
+    },
+    { "id": "bin-w", "type": "trash-bin", "position": [-7.55, 0, 3.05], "color": "graphite" },
+    {
+      "id": "ring",
+      "type": "ceiling-ring",
+      "position": [0, 3.4, -0.4],
+      "params": { "width": 1.3, "depth": 5.8, "drop": 0.78 }
+    },
+    { "id": "dl-1", "type": "downlight", "position": [-3.6, 3.1, -5.3] },
+    { "id": "dl-2", "type": "downlight", "position": [-1.2, 3.1, -5.3] },
+    { "id": "dl-3", "type": "downlight", "position": [1.2, 3.1, -5.3] },
+    { "id": "dl-4", "type": "downlight", "position": [3.6, 3.1, -5.3] },
+    { "id": "panel-1", "type": "ceiling-panel", "position": [5.6, 3.1, -3.4] },
+    { "id": "panel-2", "type": "ceiling-panel", "position": [5.6, 3.1, 0.3] },
+    { "id": "panel-3", "type": "ceiling-panel", "position": [5.6, 3.1, 3.9] },
+    { "id": "panel-4", "type": "ceiling-panel", "position": [-5.6, 3.1, -3.4] },
+    { "id": "panel-5", "type": "ceiling-panel", "position": [-5.6, 3.1, 0.3] },
+    { "id": "panel-6", "type": "ceiling-panel", "position": [-5.6, 3.1, 3.9] },
+    { "id": "panel-7", "type": "ceiling-panel", "position": [-2.6, 3.1, 5.0] },
+    { "id": "panel-8", "type": "ceiling-panel", "position": [2.6, 3.1, 5.0] },
+    {
+      "id": "pendants",
+      "type": "pendant-cluster",
+      "position": [-5.5, 3.1, 1.4],
+      "color": "black",
+      "params": { "drop": 0.9 }
+    },
+    { "id": "vent-1", "type": "ceiling-detail", "position": [3.6, 3.1, -1.4], "variant": "vent" },
+    { "id": "vent-2", "type": "ceiling-detail", "position": [-3.6, 3.1, 1.8], "variant": "vent" },
+    { "id": "spk-1", "type": "ceiling-detail", "position": [3.6, 3.1, 2.8], "variant": "speaker" },
+    {
+      "id": "spk-2",
+      "type": "ceiling-detail",
+      "position": [-3.6, 3.1, -2.2],
+      "variant": "speaker"
+    },
+    {
+      "id": "spr-1",
+      "type": "ceiling-detail",
+      "position": [5.6, 3.1, -1.6],
+      "variant": "sprinkler"
+    },
+    {
+      "id": "spr-2",
+      "type": "ceiling-detail",
+      "position": [-5.6, 3.1, 2.1],
+      "variant": "sprinkler"
+    },
+    { "id": "spr-3", "type": "ceiling-detail", "position": [0, 3.1, 5.2], "variant": "sprinkler" },
+    { "id": "smoke-1", "type": "ceiling-detail", "position": [4.0, 3.1, 5.0], "variant": "smoke" }
+  ]
+}

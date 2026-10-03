@@ -1,0 +1,196 @@
+/* Theater Mode: the shared screen full size, with chrome that steps aside while you watch. */
+.theater {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  overflow: hidden;
+  background: #000;
+  pointer-events: auto;
+}
+.theater__stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  touch-action: none;
+}
+.theater__stage.is-zoomed {
+  cursor: grab;
+}
+.theater__stage.is-zoomed:active {
+  cursor: grabbing;
+}
+.theater.is-idle .theater__stage {
+  cursor: none;
+}
+.theater__video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  transform-origin: center;
+  will-change: transform;
+  pointer-events: none;
+}
+.theater--fill .theater__video {
+  object-fit: cover;
+}
+.theater__chrome {
+  transition:
+    opacity 320ms var(--ease),
+    transform 320ms var(--ease);
+}
+.theater.is-idle .theater__chrome {
+  opacity: 0;
+  pointer-events: none;
+}
+.theater.is-idle .theater__top {
+  transform: translateY(-8px);
+}
+.theater.is-idle .theater__bottom {
+  transform: translateY(8px);
+}
+.theater__top {
+  position: absolute;
+  top: calc(var(--edge) + var(--safe-top));
+  left: calc(var(--edge) + var(--safe-left));
+  right: calc(var(--edge) + var(--safe-right));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+}
+.theater__top > * {
+  pointer-events: auto;
+}
+.theater.is-idle .theater__top > * {
+  pointer-events: none;
+}
+.theater__back {
+  height: 40px;
+  padding: 0 8px 0 12px;
+  border-color: var(--line-strong);
+  background: rgba(10, 12, 17, 0.66);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+}
+.theater__back:hover {
+  background: rgba(24, 27, 36, 0.86);
+}
+.theater__back .kbd {
+  margin-left: 2px;
+}
+.theater__info {
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+.theater__presenter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.theater__hands {
+  display: inline-flex;
+  gap: 8px;
+  padding-left: 12px;
+  border-left: 1px solid var(--line-strong);
+}
+.theater__hands li {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--warn-text);
+  font-size: 12.5px;
+}
+.theater__bottom {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--edge) + var(--safe-bottom));
+  translate: -50% 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: calc(100vw - 2 * var(--edge));
+}
+.theater__bottom .cbar__inner {
+  background: rgba(14, 16, 22, 0.84);
+}
+.theater__zoom {
+  min-width: 52px;
+  height: 32px;
+  border: 0;
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--text-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.theater__zoom:hover {
+  background: var(--hover);
+  color: var(--text);
+}
+.theater__volume {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 6px 0 12px;
+  color: var(--text-2);
+}
+.theater__volume .slider {
+  width: 96px;
+}
+.theater__floats {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--edge) + var(--bar-h) + 70px);
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.theater__float {
+  position: absolute;
+  left: var(--x, 0px);
+  bottom: 0;
+  font-size: 36px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.45));
+  animation: theater-float 2s var(--ease-out) forwards;
+}
+@keyframes theater-float {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 12px) scale(0.5);
+  }
+  14% {
+    opacity: 1;
+    transform: translate(-50%, -10px) scale(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150px) scale(0.95);
+  }
+}
+.theater .sheet {
+  /* Opaque: frosted glass over a bright slide reads as smudges. */
+  background: var(--surface-solid);
+  z-index: 3;
+}
+
+@media (max-width: 760px) {
+  .theater__info {
+    display: none;
+  }
+}

@@ -1,0 +1,58 @@
+:root {
+  color-scheme: dark;
+  --app-bg: #0a0c11;
+  --app-text: #f5f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--app-bg);
+  font-family: 'Inter Variable', Inter, system-ui, sans-serif;
+  color: var(--app-text);
+  overscroll-behavior: none;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+#scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  outline: none;
+}
+
+#ui-root {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.boot-error {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--app-bg);
+  color: var(--app-text);
+  text-align: center;
+  pointer-events: auto;
+}
+
+.boot-error h1 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+}

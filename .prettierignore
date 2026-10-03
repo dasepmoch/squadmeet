@@ -1,0 +1,12 @@
+dist
+node_modules
+.turbo
+coverage
+pnpm-lock.yaml
+apps/desktop/src-tauri/target
+apps/desktop/src-tauri/gen
+test-results
+playwright-report
+screenshots
+.backup
+Plan.md

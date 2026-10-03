@@ -1,0 +1,22 @@
+{
+  "name": "@huddle/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch --watch-path=src --watch-path=../../packages/shared/src src/main.ts",
+    "start": "node src/main.ts",
+    "bots": "node src/bots.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@huddle/content": "workspace:*",
+    "@huddle/shared": "workspace:*",
+    "helmet": "8.3.0",
+    "ws": "8.22.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/ws": "8.18.2"
+  }
+}

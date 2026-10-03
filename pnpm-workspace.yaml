@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+
+# pnpm 11 reads project settings from this file (not from .npmrc).
+saveExact: true
+strictPeerDependencies: false
+allowBuilds:
+  esbuild: false
